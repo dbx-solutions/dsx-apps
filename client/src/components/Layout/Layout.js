@@ -10,9 +10,9 @@ export default function Layout(props) {
 				<Nav />
 			</div>
 
-			<div className={styles.toolsBarContainer}>
+			{/* <div className={styles.toolsBarContainer}>
 				<ToolsBar />
-			</div>
+			</div> */}
 
 			<div className={styles.contentContainer}>{props.children}</div>
 		</>

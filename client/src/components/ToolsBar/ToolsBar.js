@@ -23,14 +23,14 @@ export default function ToolsBar() {
 			</div>
 
 			<div className={styles.rightSide}>
-				<Button
+				{/* <Button
 					icon={Icon.plus}
 					caption="Create project from template"
 					color="blue"
 					handleOnClick={handleCreateProject}
 				/>
 				<Button icon={Icon.plus} caption="Create template" color="gray" handleOnClick={handleCreateTemplate} />
-				<Button icon={Icon.template} caption="View templates" color="gray" handleOnClick={handleViewTemplates} />
+				<Button icon={Icon.template} caption="View templates" color="gray" handleOnClick={handleViewTemplates} /> */}
 			</div>
 		</>
 	);

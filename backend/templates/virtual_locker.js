@@ -1,5 +1,5 @@
 export default {
-	name: 'Main Virtual Locker',
+	name: 'Teenagers Virtual Locker',
 	root: {
 		folder_type: 'simple',
 		path: '/Virtual lockers/',

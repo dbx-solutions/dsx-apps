@@ -40,9 +40,8 @@ export default function FolderStructure() {
 			<div className={styles.leftSide}>
 				<div className={styles.art}>
 					<div className={styles.artItem}>{Icon.folder}</div>
-					<div className={styles.artItem}>{Icon.relax}</div>
 				</div>
-				<span className={styles.artTagline}>Manage all of your virtual lockers</span>
+				<span className={styles.artTagline}>Virtual Lockers</span>
 			</div>
 
 			<div className={styles.verticalDivider}></div>
