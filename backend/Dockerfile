@@ -2,9 +2,9 @@ FROM node:18.4-alpine3.15
 
 RUN npm install pm2 -g
 
-WORKDIR  /app
+WORKDIR /usr/src/app
 
-COPY package.json .
+COPY package*.json ./
 
 RUN npm install
 

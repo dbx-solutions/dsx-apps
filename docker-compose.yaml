@@ -6,7 +6,9 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - ./backend:/app
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm start
 
   folder-templates-client:
     build: ./client
@@ -14,6 +16,8 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - ./client:/app
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm start
     stdin_open: true
     tty: true
