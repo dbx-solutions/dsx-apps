@@ -54,5 +54,5 @@ export function createRoutes() {
 }
 
 export function run() {
-	app.listen(process.env.PORT);
+	app.listen(8080);
 }
