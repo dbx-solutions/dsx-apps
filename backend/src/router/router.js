@@ -43,7 +43,7 @@ export function createRoutes() {
 		});
 	});
 
-	app.get('/members', (req, res) => {
+	app.get(routes.membersList, (req, res) => {
 		fs.readFile('token.txt', 'utf8', function (err, authToken) {
 			const dbx = createDbxAsTeam(authToken.toString());
 			listMembers(dbx).then((members) => {
@@ -51,6 +51,15 @@ export function createRoutes() {
 			});
 		});
 	});
+
+	// app.get(routes.sharedLinksList, (req, res) => {
+	// 	fs.readFile('token.txt', 'utf8', function (err, authToken) {
+	// 		const dbx = createDbxAsUser(authToken.toString());
+	// 		listMembers(dbx).then((members) => {
+	// 			console.log(members);
+	// 		});
+	// 	});
+	// });
 }
 
 export function run() {

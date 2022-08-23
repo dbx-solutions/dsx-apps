@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
-import ApiRoutes from 'utils/Router/ApiRoutes';
+import { ApiRoutes } from 'Utils/Router/ApiRoutes';
 
-export default function AuthToken() {
+export function AuthToken() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const code = searchParams.get('code');
 

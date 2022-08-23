@@ -1,37 +1,20 @@
 import { React } from 'react';
-import Icon from 'components/Elements/Icon';
-import Button from 'components/Elements/Button/Button';
+import { Button } from 'Components/Elements/Button/Button';
+import { Icon } from 'Components/Elements/Icon';
 import styles from './tools_bar.module.css';
 
-export default function ToolsBar() {
-	function handleCreateProject() {
-		window.location.href = '/folder-structure/create';
-	}
-
-	function handleCreateTemplate() {
-		window.location.href = '/template/create';
-	}
-
-	function handleViewTemplates() {
-		window.location.href = '/template/view';
-	}
-
+export function ToolsBar(props) {
 	return (
 		<>
 			<div className={styles.leftSide}>
-				<span className={styles.tagline}>Folder Templates</span>
+				<span className={styles.tagline}>{props.title}</span>
 			</div>
 
-			<div className={styles.rightSide}>
-				<Button
-					icon={Icon.plus}
-					caption="Create project from template"
-					color="blue"
-					handleOnClick={handleCreateProject}
-				/>
-				<Button icon={Icon.plus} caption="Create template" color="gray" handleOnClick={handleCreateTemplate} />
-				<Button icon={Icon.template} caption="View templates" color="gray" handleOnClick={handleViewTemplates} />
-			</div>
+			{/* <div className={styles.rightSide}>
+				<Button icon={Icon.plus} caption="Do something" color="blue" handleOnClick={null} />
+				<Button icon={Icon.plus} caption="Do something else" color="gray" handleOnClick={null} />
+				<Button icon={Icon.plus} caption="Do more" color="gray" handleOnClick={null} />
+			</div> */}
 		</>
 	);
 }

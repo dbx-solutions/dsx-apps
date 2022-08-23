@@ -1,4 +1,4 @@
-export default {
+export const ApiRoutes = {
 	authUrl: '/auth/url',
 	authToken: '/auth/token',
 	templateList: '/templates',

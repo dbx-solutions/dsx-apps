@@ -13,8 +13,14 @@
 	column-gap: 1em;
 }
 
+.logoArea {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+
 .projectName {
-	display: inline-block;
+	margin: -0.2em 0 0 -0.2em;
 	color: var(--color-dbx-blue-dark);
 	font-size: 1.3em;
 }
@@ -43,4 +49,9 @@
 }
 .navLink:hover {
 	text-decoration: underline;
+}
+
+.divider {
+	height: 2em;
+	border-right: 1px solid var(--color-border);
 }

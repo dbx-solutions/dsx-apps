@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import Layout from 'components/Layout/Layout';
-import ApiRoutes from 'utils/ApiRoutes';
-import Button from 'components/Elements/Button/Button';
-import Icon from 'components/Elements/Icon';
+import { Layout } from 'Pages/Layout/Layout';
+import { Button } from 'Components/Elements/Button/Button';
+import { Icon } from 'Components/Elements/Icon';
+import { ApiRoutes } from 'Utils/Router/ApiRoutes';
 import styles from './folder_structure.module.css';
 
-export default function FolderStructure() {
+export function FolderStructure() {
 	const [templates, setTemplates] = useState([]);
 	const [template, setTemplate] = useState('');
 	const [folderName, setFolderName] = useState('');
@@ -36,21 +36,12 @@ export default function FolderStructure() {
 	}
 
 	return (
-		<Layout>
-			<div className={styles.leftSide}>
-				<div className={styles.art}>
-					<div className={styles.artItem}>{Icon.folder}</div>
-					<div className={styles.artItem}>{Icon.relax}</div>
-				</div>
-				<span className={styles.artTagline}>All your folder structures automatically created in seconds</span>
-			</div>
-
-			<div className={styles.verticalDivider}></div>
-
-			<div className={styles.rightSide}>
-				<span className={styles.formTagline}>Create a project folder structure</span>
+		<Layout title="Folder Templates">
+			<div className={styles.container}>
+				<h2 className={styles.tagline}>All your folder structures automatically created in seconds</h2>
 
 				<div className={styles.form}>
+					<span className={styles.formTagline}>Create a project folder structure</span>
 					<div className={styles.control}>
 						<span className={styles.formLabel}>Choose a template</span>
 
@@ -78,9 +69,7 @@ export default function FolderStructure() {
 						/>
 					</div>
 
-					<div className={styles.buttonContainer}>
-						<Button icon={Icon.plus} caption="Create project" handleOnClick={createFromTemplate} />
-					</div>
+					<Button icon={Icon.plus} caption="Create project from template" handleOnClick={createFromTemplate} />
 				</div>
 			</div>
 		</Layout>

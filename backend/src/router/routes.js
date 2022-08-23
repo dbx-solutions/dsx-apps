@@ -8,4 +8,10 @@ export const routes = {
 
 	// folder structure
 	structureCreate: '/structures',
+
+	// members
+	membersList: '/members',
+
+	// shared links
+	sharedLinksList: '/shared-links',
 };

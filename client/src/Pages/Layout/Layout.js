@@ -1,9 +1,9 @@
 import { React } from 'react';
-import Nav from 'components/Nav/Nav';
-import ToolsBar from 'components/ToolsBar/ToolsBar';
+import { Nav } from 'Components/Nav/Nav';
+import { ToolsBar } from 'Components/ToolsBar/ToolsBar';
 import styles from './layout.module.css';
 
-export default function Layout(props) {
+export function Layout(props) {
 	return (
 		<>
 			<div className={styles.navContainer}>
@@ -11,7 +11,7 @@ export default function Layout(props) {
 			</div>
 
 			<div className={styles.toolsBarContainer}>
-				<ToolsBar />
+				<ToolsBar title={props.title} />
 			</div>
 
 			<div className={styles.contentContainer}>{props.children}</div>

@@ -1,4 +1,4 @@
-export default {
+export const Icon = {
 	link: (
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.187 512.187">
 			<path
@@ -194,13 +194,7 @@ export default {
 	),
 
 	logo: (
-		<svg
-			viewBox="0 0 218 64"
-			fill="none"
-			height="45"
-			focusable="false"
-			role="presentation"
-		>
+		<svg viewBox="0 0 218 64" fill="none" height="45" focusable="false" role="presentation">
 			<path
 				d="M25.1797 13L13.8369 20.125L25.1797 27.25L36.5244 20.125L47.8672 27.25L59.21 20.125L47.8672 13L36.5244 20.125L25.1797 13Z"
 				fill="var(--color-dbx-blue-dark)"

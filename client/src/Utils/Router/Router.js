@@ -1,15 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Main from 'pages/Main/Main';
-import FolderStructure from 'pages/FolderStructure/FolderStructure';
-import AuthToken from 'utils/Auth/AuthToken';
+import { Main } from 'Pages/Main/Main';
+import { FolderStructure } from 'Pages/FolderStructure/FolderStructure';
+import { SharedLinksReport } from 'Pages/SharedLinksReport/SharedLinksReport';
+import { AuthToken } from 'Utils/Auth/AuthToken';
 
-export default function Router() {
+export function Router() {
 	return (
 		<Routes>
 			<Route path="/" element={<Main />} />
 			<Route path="/auth/token" element={<AuthToken />} />
-			<Route path="/folder-structure" element={<FolderStructure />} />
+			<Route path="/folder-templates" element={<FolderStructure />} />
+			<Route path="/shared-links-report" element={<SharedLinksReport />} />
 		</Routes>
 	);
 }
