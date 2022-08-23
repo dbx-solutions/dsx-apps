@@ -1,7 +1,7 @@
 import React from 'react';
-import ApiRoutes from '../../ApiRoutes';
-import Button from '../Elements/Button/Button';
-import Icon from '../Elements/Icon';
+import ApiRoutes from 'utils/Router/ApiRoutes';
+import Button from 'components/Elements/Button/Button';
+import Icon from 'components/Elements/Icon';
 
 export default function OAuth() {
 	function connectToDropbox() {

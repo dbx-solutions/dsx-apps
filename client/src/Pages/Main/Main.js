@@ -1,5 +1,5 @@
 import { React } from 'react';
-import FolderStructure from '../FolderStructure/FolderStructure';
+import FolderStructure from 'pages/FolderStructure/FolderStructure';
 
 export default function Main() {
 	return <FolderStructure />;

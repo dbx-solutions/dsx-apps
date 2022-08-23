@@ -1,6 +1,6 @@
 import { React } from 'react';
-import Icon from '../Elements/Icon';
-import Button from '../Elements/Button/Button';
+import Icon from 'components/Elements/Icon';
+import Button from 'components/Elements/Button/Button';
 import styles from './tools_bar.module.css';
 
 export default function ToolsBar() {

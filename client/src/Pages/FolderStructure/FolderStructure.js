@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Layout from '../Layout/Layout';
-import ApiRoutes from '../../ApiRoutes';
-import Button from '../Elements/Button/Button';
-import Icon from '../Elements/Icon';
+import Layout from 'components/Layout/Layout';
+import ApiRoutes from 'utils/ApiRoutes';
+import Button from 'components/Elements/Button/Button';
+import Icon from 'components/Elements/Icon';
 import styles from './folder_structure.module.css';
 
 export default function FolderStructure() {
@@ -42,17 +42,13 @@ export default function FolderStructure() {
 					<div className={styles.artItem}>{Icon.folder}</div>
 					<div className={styles.artItem}>{Icon.relax}</div>
 				</div>
-				<span className={styles.artTagline}>
-					All your folder structures automatically created in seconds
-				</span>
+				<span className={styles.artTagline}>All your folder structures automatically created in seconds</span>
 			</div>
 
 			<div className={styles.verticalDivider}></div>
 
 			<div className={styles.rightSide}>
-				<span className={styles.formTagline}>
-					Create a project folder structure
-				</span>
+				<span className={styles.formTagline}>Create a project folder structure</span>
 
 				<div className={styles.form}>
 					<div className={styles.control}>
@@ -83,11 +79,7 @@ export default function FolderStructure() {
 					</div>
 
 					<div className={styles.buttonContainer}>
-						<Button
-							icon={Icon.plus}
-							caption="Create project"
-							handleOnClick={createFromTemplate}
-						/>
+						<Button icon={Icon.plus} caption="Create project" handleOnClick={createFromTemplate} />
 					</div>
 				</div>
 			</div>

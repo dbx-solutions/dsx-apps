@@ -1,6 +1,6 @@
 import { React } from 'react';
-import Nav from '../Nav/Nav';
-import ToolsBar from '../ToolsBar/ToolsBar';
+import Nav from 'components/Nav/Nav';
+import ToolsBar from 'components/ToolsBar/ToolsBar';
 import styles from './layout.module.css';
 
 export default function Layout(props) {

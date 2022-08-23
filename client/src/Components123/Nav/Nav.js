@@ -1,6 +1,6 @@
 import { React } from 'react';
-import OAuth from '../Auth/OAuth';
-import Icon from '../Elements/Icon';
+import OAuth from 'Utils/Auth/OAuth';
+import Icon from 'Components/Elements/Icon';
 import styles from './nav.module.css';
 
 export default function Nav() {
@@ -14,18 +14,10 @@ export default function Nav() {
 			</div>
 
 			<div className={styles.rightSide}>
-				<a
-					href="https://dbx-solutions.github.io/dsx/"
-					target="_blank"
-					className={styles.navLink}
-				>
+				<a href="https://dbx-solutions.github.io/dsx/" target="_blank" className={styles.navLink}>
 					Documentation
 				</a>
-				<a
-					href="https://github.com/dbx-solutions"
-					target="_blank"
-					className={styles.navLink}
-				>
+				<a href="https://github.com/dbx-solutions" target="_blank" className={styles.navLink}>
 					Code
 				</a>
 
