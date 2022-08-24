@@ -8,7 +8,7 @@ export function Nav() {
 			<div className={styles.leftSide}>
 				<a href="/" className={styles.logoArea}>
 					<span className={styles.logo}> {Icon.logo}</span>
-					<span className={styles.projectName}>Solution Accelerators</span>
+					<span className={styles.projectName}>Solutions Accelerator</span>
 				</a>
 				<span className={styles.beta}>Beta</span>
 			</div>

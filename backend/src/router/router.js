@@ -7,7 +7,8 @@ import { getAuthTokenFromCode, getAuthUrl, storeAuthToken } from '../auth/auth.j
 import { createStructureFromTemplate } from '../../src/structure/structure.js';
 import { listTemplates } from '../../src/template/template.js';
 import { listMembers } from '../../node_modules/dsx-core/src/resources/dropbox/team/member/member.js';
-import { createDbxAsTeam } from '../../node_modules/dsx-core/src/util/dbx/dbx.js';
+import { listSharedLinks } from '../../node_modules/dsx-core/src/resources/dropbox/user/sharedLinks/sharedLinks.js';
+import { createDbxAsTeam, createDbxAsUser } from '../../node_modules/dsx-core/src/util/dbx/dbx.js';
 
 const app = express();
 
@@ -47,19 +48,21 @@ export function createRoutes() {
 		fs.readFile('token.txt', 'utf8', function (err, authToken) {
 			const dbx = createDbxAsTeam(authToken.toString());
 			listMembers(dbx).then((members) => {
-				console.log(members);
+				res.json({ members: members });
 			});
 		});
 	});
 
-	// app.get(routes.sharedLinksList, (req, res) => {
-	// 	fs.readFile('token.txt', 'utf8', function (err, authToken) {
-	// 		const dbx = createDbxAsUser(authToken.toString());
-	// 		listMembers(dbx).then((members) => {
-	// 			console.log(members);
-	// 		});
-	// 	});
-	// });
+	app.get(routes.sharedLinksList, (req, res) => {
+		const { teamMemberId } = req.query;
+
+		fs.readFile('token.txt', 'utf8', function (err, authToken) {
+			const dbx = createDbxAsUser(authToken.toString(), teamMemberId);
+			listSharedLinks(dbx).then((sharedLinks) => {
+				res.json({ sharedLinks: sharedLinks });
+			});
+		});
+	});
 }
 
 export function run() {
