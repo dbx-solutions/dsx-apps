@@ -9,6 +9,9 @@ export function SharedLinksReport() {
 	const [teamMembersList, setTeamMembersList] = useState([]);
 	const [memberSharedLinksList, setMemberSharedLinksList] = useState([]);
 	const [tableCaption, setTableCaption] = useState('');
+	const [showEmailLink, setShowEmailLink] = useState(false);
+	const [emailedMemberId, setEmailedMemberId] = useState(null);
+	const [emailUrl, setEmailUrl] = useState('');
 
 	useEffect(() => {
 		getMembersList();
@@ -64,7 +67,13 @@ export function SharedLinksReport() {
 					memberEmail: member.email,
 					sharedLinksPageUrl: `${window.location.origin}/shared-links-report/${member.teamMemberId}`,
 				})
-		).then((res) => console.log(res.json()));
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				setShowEmailLink(true);
+				setEmailedMemberId(member.teamMemberId);
+				setEmailUrl(data.emailUrl);
+			});
 	}
 
 	return (
@@ -89,12 +98,21 @@ export function SharedLinksReport() {
 									handleOnClick={() => getSharedLinks(member.fullName, member.teamMemberId)}
 									color="gray"
 								/>
-								<Button
-									icon={Icon.link}
-									caption="Email shared links"
-									handleOnClick={() => emailSharedLinks(member)}
-									color="gray"
-								/>
+								{showEmailLink & (emailedMemberId === member.teamMemberId) ? (
+									<Button
+										icon={Icon.link}
+										caption="Open email"
+										handleOnClick={() => window.open(emailUrl)}
+										color="blue"
+									/>
+								) : (
+									<Button
+										icon={Icon.link}
+										caption="Email shared links"
+										handleOnClick={() => emailSharedLinks(member)}
+										color="gray"
+									/>
+								)}
 							</div>
 						</li>
 					))}

@@ -67,7 +67,17 @@ export function createRoutes() {
 
 	app.get(routes.sharedLinksEmail, (req, res) => {
 		const { memberName, memberEmail, sharedLinksPageUrl } = req.query;
-		sendEmail(memberName, memberEmail, sharedLinksPageUrl);
+		sendEmail(memberName, memberEmail, sharedLinksPageUrl).then((url) => res.json({ emailUrl: url }));
+	});
+
+	app.get('/check-auth', (req, res) => {
+		try {
+			if (fs.existsSync('./token.txt')) {
+				res.json({ exists: true });
+			}
+		} catch (err) {
+			res.json({ exists: 'error' });
+		}
 	});
 }
 
@@ -92,8 +102,7 @@ async function sendEmail(name, email, sharedLinksPageUrl) {
 		<a href=${sharedLinksPageUrl}>Shared Links</a>`,
 	});
 
-	console.log('Message sent: %s', info.messageId);
-	console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+	return nodemailer.getTestMessageUrl(info);
 }
 
 export function run() {

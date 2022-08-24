@@ -6,4 +6,5 @@ export const ApiRoutes = {
 	teamMembersList: '/members',
 	sharedLinksList: '/shared-links?',
 	sharedLinksEmail: '/email-shared-links?',
+	authFile: '/check-auth',
 };
