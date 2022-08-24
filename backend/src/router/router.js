@@ -9,6 +9,7 @@ import { listTemplates } from '../../src/template/template.js';
 import { listMembers } from '../../node_modules/dsx-core/src/resources/dropbox/team/member/member.js';
 import { listSharedLinks } from '../../node_modules/dsx-core/src/resources/dropbox/user/sharedLinks/sharedLinks.js';
 import { createDbxAsTeam, createDbxAsUser } from '../../node_modules/dsx-core/src/util/dbx/dbx.js';
+import nodemailer from 'nodemailer';
 
 const app = express();
 
@@ -63,6 +64,36 @@ export function createRoutes() {
 			});
 		});
 	});
+
+	app.get(routes.sharedLinksEmail, (req, res) => {
+		const { memberName, memberEmail, sharedLinksPageUrl } = req.query;
+		sendEmail(memberName, memberEmail, sharedLinksPageUrl);
+	});
+}
+
+async function sendEmail(name, email, sharedLinksPageUrl) {
+	let testAccount = await nodemailer.createTestAccount();
+
+	let transporter = nodemailer.createTransport({
+		host: 'smtp.ethereal.email',
+		port: 587,
+		secure: false,
+		auth: {
+			user: testAccount.user,
+			pass: testAccount.pass,
+		},
+	});
+
+	let info = await transporter.sendMail({
+		from: 'Dropbox Solutions Accelerator<hussam@dropbox.com>',
+		to: email,
+		subject: 'Check out your Dropbox shared links',
+		html: `<p>Hi ${name}, please check this list of you Dropbox shared links and make sure you only share the needed information with our external teams. Thanks!</p>
+		<a href=${sharedLinksPageUrl}>Shared Links</a>`,
+	});
+
+	console.log('Message sent: %s', info.messageId);
+	console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 }
 
 export function run() {

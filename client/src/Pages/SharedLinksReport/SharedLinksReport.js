@@ -15,7 +15,7 @@ export function SharedLinksReport() {
 	}, []);
 
 	function getMembersList() {
-		fetch(ApiRoutes.teamMembers)
+		fetch(ApiRoutes.teamMembersList)
 			.then((res) => res.json())
 			.then((data) => {
 				const members = data.members.map((member) => {
@@ -31,7 +31,7 @@ export function SharedLinksReport() {
 
 	function getSharedLinks(memberName, teamMemberId) {
 		fetch(
-			ApiRoutes.sharedLinks +
+			ApiRoutes.sharedLinksList +
 				new URLSearchParams({
 					teamMemberId: teamMemberId,
 				})
@@ -56,6 +56,17 @@ export function SharedLinksReport() {
 			});
 	}
 
+	function emailSharedLinks(member) {
+		fetch(
+			ApiRoutes.sharedLinksEmail +
+				new URLSearchParams({
+					memberName: member.fullName,
+					memberEmail: member.email,
+					sharedLinksPageUrl: `${window.location.origin}/shared-links-report/${member.teamMemberId}`,
+				})
+		).then((res) => console.log(res.json()));
+	}
+
 	return (
 		<Layout title="Shared Links Report">
 			<div className={styles.container}>
@@ -71,11 +82,17 @@ export function SharedLinksReport() {
 								<span className={styles.memberId}>ID: {member.teamMemberId}</span>
 							</div>
 
-							<div>
+							<div className={styles.memberActionsContainer}>
 								<Button
 									icon={Icon.template}
 									caption="Show shared links"
 									handleOnClick={() => getSharedLinks(member.fullName, member.teamMemberId)}
+									color="gray"
+								/>
+								<Button
+									icon={Icon.link}
+									caption="Email shared links"
+									handleOnClick={() => emailSharedLinks(member)}
 									color="gray"
 								/>
 							</div>

@@ -14,4 +14,5 @@ export const routes = {
 
 	// shared links
 	sharedLinksList: '/shared-links',
+	sharedLinksEmail: '/email-shared-links',
 };

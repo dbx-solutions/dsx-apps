@@ -40,6 +40,11 @@
 	color: var(--color-text-dark);
 }
 
+.memberActionsContainer {
+	display: flex;
+	gap: 1em;
+}
+
 .linksTableContainer {
 	width: 100%;
 }
