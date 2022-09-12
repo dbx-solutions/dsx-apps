@@ -1,8 +1,8 @@
 version: '3.8'
 services:
-  folder-templates-backend:
+  dsx-apps-backend:
     build: ./backend
-    container_name: folder-templates-backend-container
+    container_name: dsx-apps-backend-container
     ports:
       - '8080:8080'
     volumes:
@@ -10,9 +10,9 @@ services:
       - /usr/src/app/node_modules
     command: npm start
 
-  folder-templates-client:
+  dsx-apps-client:
     build: ./client
-    container_name: folder-templates-client-container
+    container_name: dsx-apps-client-container
     ports:
       - '3000:3000'
     volumes:
