@@ -5,6 +5,6 @@ export const ApiRoutes = {
 	folderStructure: '/structures',
 	teamMembersList: '/members',
 	sharedLinksList: '/shared-links?',
-	sharedLinksEmail: '/email-shared-links?',
+	sharedLinksEmail: '/email-shared-links',
 	authFile: '/check-auth',
 };

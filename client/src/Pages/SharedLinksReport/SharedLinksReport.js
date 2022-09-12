@@ -23,6 +23,7 @@ export function SharedLinksReport() {
 			.then((data) => {
 				const members = data.members.map((member) => {
 					return {
+						givenName: member.profile.name.given_name,
 						fullName: member.profile.name.given_name + ' ' + member.profile.name.surname,
 						email: member.profile.email,
 						teamMemberId: member.profile.team_member_id,
@@ -32,8 +33,8 @@ export function SharedLinksReport() {
 			});
 	}
 
-	function getSharedLinks(memberName, teamMemberId) {
-		fetch(
+	async function getSharedLinks(memberName, teamMemberId) {
+		await fetch(
 			ApiRoutes.sharedLinksList +
 				new URLSearchParams({
 					teamMemberId: teamMemberId,
@@ -42,16 +43,7 @@ export function SharedLinksReport() {
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.sharedLinks.length > 0) {
-					const sharedLinks = data.sharedLinks.map((link) => {
-						return {
-							type: link['.tag'].charAt(0).toUpperCase() + link['.tag'].slice(1),
-							name: link.name,
-							url: link.url,
-							visibility: link.link_permissions.resolved_visibility['.tag'] === 'team_only' ? 'My team' : 'Public',
-							createdAt: new Date(link.server_modified),
-						};
-					});
-					setMemberSharedLinksList(sharedLinks);
+					setMemberSharedLinksList(data.sharedLinks);
 					setTableCaption(`Shared links for ${memberName}`);
 				} else {
 					setMemberSharedLinksList([]);
@@ -60,15 +52,20 @@ export function SharedLinksReport() {
 			});
 	}
 
-	function emailSharedLinks(member) {
-		fetch(
-			ApiRoutes.sharedLinksEmail +
-				new URLSearchParams({
-					memberName: member.fullName,
-					memberEmail: member.email,
-					sharedLinksPageUrl: `${window.location.origin}/shared-links-report/${member.teamMemberId}`,
-				})
-		)
+	async function emailSharedLinks(member) {
+		await fetch(ApiRoutes.sharedLinksEmail, {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				teamMemberId: member.teamMemberId,
+				memberGivenName: member.givenName,
+				memberEmail: member.email,
+				memberSharedLinksPageUrl: `${window.location.origin}/shared-links-report/${member.teamMemberId}`,
+			}),
+		})
 			.then((res) => res.json())
 			.then((data) => {
 				setShowEmailLink(true);
