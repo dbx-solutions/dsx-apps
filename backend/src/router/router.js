@@ -76,7 +76,7 @@ export function createRoutes() {
 				res.json({ exists: true });
 			}
 		} catch (err) {
-			res.json({ exists: 'error' });
+			res.json({ exists: err });
 		}
 	});
 }

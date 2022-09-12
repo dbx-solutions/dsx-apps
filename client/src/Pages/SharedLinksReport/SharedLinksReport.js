@@ -48,6 +48,7 @@ export function SharedLinksReport() {
 							name: link.name,
 							url: link.url,
 							visibility: link.link_permissions.resolved_visibility['.tag'] === 'team_only' ? 'My team' : 'Public',
+							createdAt: new Date(link.server_modified),
 						};
 					});
 					setMemberSharedLinksList(sharedLinks);
@@ -128,6 +129,7 @@ export function SharedLinksReport() {
 									<th>Type</th>
 									<th>Name</th>
 									<th>Visibility</th>
+									<th>Created at</th>
 								</tr>
 							</thead>
 
@@ -142,6 +144,11 @@ export function SharedLinksReport() {
 											</a>
 										</td>
 										<td>{link.visibility}</td>
+										<td>
+											{link.type === 'Folder'
+												? 'Not specified'
+												: `${link.createdAt.toLocaleString('default', { dateStyle: 'medium' })}`}
+										</td>
 									</tr>
 								))}
 							</tbody>

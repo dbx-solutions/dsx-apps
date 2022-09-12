@@ -13,7 +13,12 @@ export function Main() {
 	}, []);
 
 	function checkAuthFile() {
-		fetch(ApiRoutes.authFile)
+		fetch(ApiRoutes.authFile, {
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+		})
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.exists) setIsAuth(true);
@@ -21,7 +26,7 @@ export function Main() {
 	}
 
 	return (
-		<Layout title="Welcome to the Dropbox Solution Accelerators!">
+		<Layout title="Welcome to the Dropbox Solutions Accelerator!">
 			<h2 className={styles.tagline}>Automate all of your Dropbox workflows</h2>
 
 			<div className={styles.container}>
